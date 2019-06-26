@@ -1,0 +1,33 @@
+{
+  "name": "抽屉tools",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "抽屉新热榜辅助工具",
+  "browser_action": {
+    "default_icon": "icons/chouti.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "permissions": [
+    "tabs",
+    "https://dig.chouti.com/*"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "js/jquery.js",
+        "js/content.js"
+      ],
+      "matches": [
+        "https://dig.chouti.com/*"
+      ],
+      "css": [
+        "css/chouti.css"
+      ]
+    }
+  ]
+}
