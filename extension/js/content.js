@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    localStorage.setItem('is_open', '-1');
     set_comment_code();
 
     function set_comment_code() {
@@ -13,7 +14,9 @@ $(document).ready(function () {
         }
         for (i = 0; i < len; i++) {
             var now_href = $(comments[i]).attr("href");
-            var code = '$("#iframe").remove();' +
+            var code = 'var is_open=' + i + ';' +
+                'if(is_open==localStorage.getItem("is_open")){$("#iframe").remove();localStorage.setItem("is_open","-1");}else{localStorage.setItem("is_open",is_open);' +
+                '$("#iframe").remove();' +
                 'var iframe_content="<iframe scrolling=\'no\' id=\'iframe\' frameborder=\'0\' class=\'g-iframe\' src=\'https://dig.chouti.com/' + now_href + '\' style=\'width: 840px; display: none;padding: 24px 18px;height: 600px;border: 0;\'></iframe>";' +
                 '$($(".link-con>.link-item")[' + i + ']).append(iframe_content);' +
                 'var _iframe=document.getElementById(\'iframe\').contentWindow.document.getElementsByClassName(\'header-fix\');' +
@@ -73,12 +76,19 @@ $(document).ready(function () {
                 'setTimeout(function () {\n' +
                 '    var _iframe = document.getElementById(\'iframe\').contentWindow.document.getElementsByClassName(\'comment-area\');\n' +
                 '    $("#iframe").css("height", _iframe[0].clientHeight + 236);\n' +
-                '}, 5000);';
+                '}, 5000);}';
             $(comments[i]).attr("href", "javascript:" + code);
         }
     }
 
-    $("body").attr("onclick", "javascript:$('#iframe').remove();");
+    $('body').click(function (e) {
+        $('#iframe').remove();
+        var target = $(e.target);
+        console.log(target);
+        if (!target.is('.comment-icon.left') && !target.is('.comment-num.left') && !target.is('.operate-item.comment.left.clearfix')) {
+            localStorage.setItem("is_open", "-1");
+        }
+    });
     $(".msgAlert-place").attr("onclick", "javascript:window.location.href='https://dig.chouti.com/';");
     $(".msg-alert>a").attr("href", "https://dig.chouti.com/");
 });
