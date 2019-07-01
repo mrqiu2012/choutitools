@@ -1,3 +1,4 @@
+//test
 function open_comment(now_href) {
     $("#iframe").remove();
     var iframe_content = "<iframe scrolling='no' id='iframe' frameborder='0' class='g-iframe' src='https://dig.chouti.com/link/26614481?mark=true' style='width: 840px;padding: 24px 18px;height: 600px;border: 0;'></iframe>";
@@ -15,4 +16,17 @@ function open_comment(now_href) {
 
         $("#iframe").css("height", _iframe[0].clientHeight + 83);
     }, 200);
+
+    setTimeout(function () {
+        var _iframe = document.getElementById('iframe').contentWindow.document.getElementsByClassName('comment-area');
+        $("#iframe").css("height", _iframe[0].clientHeight + 236);
+    }, 1000);
+    setTimeout(function () {
+        var _iframe = document.getElementById('iframe').contentWindow.document.getElementsByClassName('comment-area');
+        $("#iframe").css("height", _iframe[0].clientHeight + 236);
+    }, 1500);
+    setTimeout(function () {
+        var _iframe = document.getElementById('iframe').contentWindow.document.getElementsByClassName('comment-area');
+        $("#iframe").css("height", _iframe[0].clientHeight + 236);
+    }, 2000);
 }
