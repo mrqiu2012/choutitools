@@ -78,6 +78,7 @@ $(document).ready(function () {
     }
 
     $("body").attr("onclick", "javascript:$('#iframe').remove();");
+    $(".msgAlert-place").attr("onclick", "javascript:window.location.href='https://dig.chouti.com/';");
     $(".msg-alert>a").attr("href", "https://dig.chouti.com/");
 });
 
