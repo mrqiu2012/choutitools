@@ -14,7 +14,7 @@ $(document).ready(function () {
         for (i = 0; i < len; i++) {
             var now_href = $(comments[i]).attr("href");
             var code = '$("#iframe").remove();' +
-                'var iframe_content="<iframe scrolling=\'no\' id=\'iframe\' frameborder=\'0\' class=\'g-iframe\' src=\'https://dig.chouti.com/' + now_href + '\' style=\'width: 840px;padding: 24px 18px;height: 600px;border: 0;\'></iframe>";' +
+                'var iframe_content="<iframe scrolling=\'no\' id=\'iframe\' frameborder=\'0\' class=\'g-iframe\' src=\'https://dig.chouti.com/' + now_href + '\' style=\'width: 840px; display: none;padding: 24px 18px;height: 600px;border: 0;\'></iframe>";' +
                 '$($(".link-con>.link-item")[' + i + ']).append(iframe_content);' +
                 'var _iframe=document.getElementById(\'iframe\').contentWindow.document.getElementsByClassName(\'header-fix\');' +
                 'if(_iframe.length>0){_iframe[0].style.display="none"};' +
@@ -36,6 +36,7 @@ $(document).ready(function () {
                 '   if(_iframe.length>0){_iframe[0].style.display="none"};' +
                 '   _iframe=document.getElementById(\'iframe\').contentWindow.document.getElementsByClassName(\'footer\');' +
                 '   if(_iframe.length>0){_iframe[0].style.display="none"};' +
+                '   $("#iframe").css("display","block");' +
                 '}, 500);' +
                 'setTimeout(function () {\n' +
                 '    var _iframe = document.getElementById(\'iframe\').contentWindow.document.getElementsByClassName(\'comment-area\');\n' +
